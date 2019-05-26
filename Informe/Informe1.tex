@@ -46,18 +46,22 @@ Las variables elegidas fueron: edad, duración de condena, diferencia entre fech
 
 \subsection{Edad}
 
+En la figura \ref{fig:edad} mostramos la distribuci\'on de edades de los internos, junto con su suma acumulada. Podemos ver que la mayor\'ia de los internos son personas j\'ovenes, y que el n\'umero de internos decae fuertemente con la edad. En el histograma se observa que hay registros de personas con edad cercana a 0 años. En realidad, se trata de 369 registros con edad igual a 0 años. Estos casos podr\'ian tratarse de un error de carga, o podr\'ian correspondan a ni\~nos nacidos dentro de los establecimientos. Observando en detalle esos registros, se puede ver que la segunda opci\'on es improbable, dado que esos registros tienen informaci\'on en otros campos que corresponden a internos que han cometido delitos.  Los dem\'as registros que podr\'ian ser considerados como outliers son los correspondientes a menores de edad. En este caso, existen 8 registros de personas de 16 a\~nos y 11 registros de personas de 17 a\~nos. Como esta cantidad es baja y no afecta la estad\'istica, decidimos incluirlos en el an\'alisis.
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.28]{graficos/edad.png}
-	\caption{}
+	\caption{Histograma de edades de los internos, junto con su la suma acumulada. \label{fig:edad}}
 \end{figure}
 
 \subsection{Duración de condena}
 
+En la figura \ref{fig:duracion_condena} mostramos el histograma de duraci\'on de condenas, junto con su suma cumulativa complemantaria. 
+
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.28]{graficos/duracion.png}
-	\caption{}
+	\includegraphics[scale=0.28]{graficos/duracion_condena.png}
+	\caption{Histograma de la duraci\'on de condenas y su suma cumulativa complementaria. \label{fig:duracion_condena}}
 \end{figure}
 
 \subsection{variable3}
@@ -65,15 +69,15 @@ Las variables elegidas fueron: edad, duración de condena, diferencia entre fech
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.3]{graficos/diff_condenado_detencion.png}
-	\caption{}
+	\caption{Histograma de los tiempos transcurridos entre la fecha de detenci\'on y la fecha de condena. \label{fig:tiempo_detencion_condena}}
 \end{figure}
 
-\subsection{variable4}
+\subsection{Cantidad de delitos por interno}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.4]{graficos/cantidad_delitos.png}
-	\caption{}
+	\caption{Histograma de la cantidad de delitos cometidos por cada interno. \label{fig:cantidad_delitos}}
 \end{figure}
 
 \section{Evolución de variables en el tiempo}
