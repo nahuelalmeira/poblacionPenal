@@ -56,7 +56,11 @@ En la figura \ref{fig:edad} mostramos la distribuci\'on de edades de los interno
 
 \subsection{Duración de condena}
 
-En la figura \ref{fig:duracion_condena} mostramos el histograma de duraci\'on de condenas, junto con su suma cumulativa complemantaria. 
+Para estudiar la duraci\'on de las condenas, es necesario utilizar dos campos: ``duracion\textunderscore condena\textunderscore anios'', que indica la cantidad de a\~nos completos, y ``duracion\textunderscore  condena\textunderscore  meses'', que indica la cantidad de meses restantes. Por ejemplo, una condena de 9 a\~nos y 5 meses figurar\'ia en la base de datos como duracion\textunderscore  condena\textunderscore  anios: 9, duracion\textunderscore  condena\textunderscore  meses: 5. Para nuestro an\'alisis, consideramos una nueva variable racional que sea la suma de los dos campos anteriores, medida en a\~nos. 
+
+El preprocesamiento fue el siguiente: Filtramos los registros con valor nulo en duracion\textunderscore condena\textunderscore anios (1) y con valor nulo en duracion\textunderscore condena\textunderscore meses (32). Luego, filtramos los registros con valor igual a 0 en ambos campos (3649).
+
+En la figura \ref{fig:duracion_condena} mostramos el histograma de duraci\'on de condenas, junto con su suma cumulativa complemantaria. Podemos ver que la mayor\'ia de las condenas son cortas (las tres medidas de centralidad calculadas son menores o iguales a 8 a\~nos), y que presentan un decaimiento aproximadamente exponencial a medida que se incrementa la duraci\'on. 
 
 \begin{figure}[H]
 	\centering
@@ -64,15 +68,34 @@ En la figura \ref{fig:duracion_condena} mostramos el histograma de duraci\'on de
 	\caption{Histograma de la duraci\'on de condenas y su suma cumulativa complementaria. \label{fig:duracion_condena}}
 \end{figure}
 
-\subsection{variable3}
+\subsection{Diferencia entre fecha de condena y fecha de detenci\'on}
+
+Una importante fracci\'on de la poblaci\'on penal se encuentra detenida sin una condena firme. La situaci\'on m\'as frecuente es la de la prisi\'on preventiva. A continuaci\'on, mostramos un an\'alisis sobre los tiempos transcurridos entre la detenci\'on y la aplicaci\'on de la condena. 
+
+Para hacer este an\'alisis, utilizamos los campos ``fecha\textunderscore detencion'' y ``fecha\textunderscore condenado''.
+
+Preprocesamiento: Seleccionamos s\'olo los registros cuya situaci\'on penal sea ``Condenado'' (46405). Luego filtramos aquellos que tengan valores nulos para cualquiera de los dos campos de inter\'es. En tercer lugar, filtramos los registros que tengan fechas posteriores a la fecha del censo (6409). Estos \'ultimos casos son claramente outliers y corresponde descartarlos.
+
+Al observar la distribuci\'on de diferencias de tiempo (figura \ref{fig:tiempo_detencion_condena}) se puede ver que hay una gran cantidad de casos con diferencia de tiempo negativas. De hecho, la distribuci\'on est\'a centrada en un valor cercano a cero, y decae aproximadamente tanto hacia valores positivos como negativos. Mientras que los valores positivos no parecen, a priori, extraños, es necesario interpretar los valores negativos. Para esto, hay que preguntarse si existe alguna condición en la que la fecha de condenado pueda preceder a la fecha de detención. 
 
 \begin{figure}[H]
 	\centering
+	\includegraphics[scale=0.3]{graficos/diff_condenado_detencion_negativos.png}%
 	\includegraphics[scale=0.3]{graficos/diff_condenado_detencion.png}
-	\caption{Histograma de los tiempos transcurridos entre la fecha de detenci\'on y la fecha de condena. \label{fig:tiempo_detencion_condena}}
+	\caption{Histograma de los tiempos transcurridos entre la fecha de detenci\'on y la fecha de condena. A la izquierda, teniendo en cuenta diferencias de tiempo negativas, y a la derecha, considerando s\'olo las positivas. \label{fig:tiempo_detencion_condena}}
 \end{figure}
 
+
+Existen algunas hipótesis que podrían dar lugar a una situación de este tipo. La primera es que una persona podría haber recibido la condena sin estar detenida, o estando detenida en un establecimiento policial, cuyos datos no están dentro de la base de datos, y haber sido incorporada al servicio penitenciario un tiempo después. Podría suceder, incluso, que una persona se de a la fuga después de haber sido condenada, y antes de ser detenida. La segunda es que una persona puede tener múltiples causas. Se puede dar el caso en que una persona haya sido condenada por una causa y que, habiendo cumplido su condena, haya sido detenida por un segundo delito. En ese caso, podría ser que el registro muestre la fecha de condena de la primera causa, y la fecha de detención de la segunda. Para testear esta hipótesis, se podría estudiar si los registros para los cuales la diferencia de tiempos es negativa corresponde a registros de reincidentes. La tercera es que un condenado haya sido derivado de otro establecimiento y que figure como fecha de detención la fecha en la que ingresó al último establecimiento.
+
+Para este primer análisis, vamos a considerar todos los valores negativos como outliers y descartarlos. Más adelante, buscaremos evaluar estas hipótesis. Al hacer esto, obtenemos la gr\'afica de la derecha en la figura \ref{fig:tiempo_detencion_condena}.
+
+
 \subsection{Cantidad de delitos por interno}
+
+Cada interno puede haber cometido uno o más delitos. Cada delito está registrado en un campo distinto, y se registra hasta un máximo de 5 delitos, ordenados de mayor a menor gravedad\footnote{No en todos los casos la clasificaci\'on est\'a bien hecha. De hecho, existen regsitros donde el primer delito es nulo, y el segundo no lo es.}. Aquí veremos cómo se distribuye el número de delitos por interno.
+
+En el histograma de la figura \ref{fig:cantidad_delitos} podemos ver el histograma con la cantidad de delitos por interno. Vemos que la gran mayor\'ia (68915 registros) ha cometido un \'unico delito, y que este n\'umero decae de manera aproximadamente exponencial para delitos mayores que 1.  
 
 \begin{figure}[H]
 	\centering
@@ -81,9 +104,10 @@ En la figura \ref{fig:duracion_condena} mostramos el histograma de duraci\'on de
 \end{figure}
 
 \section{Evolución de variables en el tiempo}
+
 Seleccionar dos variables y graficar cómo fueron cambiando desde 2002 a 2017. Para ello se tiene que utilizar el siguiente conjunto de datos: \url{https://github.com/camporeale/Datos/raw/master/sneep_2002_2017_diplodatos.zip}\\
 
-Las variables elegidas fueron situación legal y participación en programas educativos.
+Las variables elegidas fueron la situación legal y la participación en programas educativos.
 
 \subsection{Situación legal}
 
