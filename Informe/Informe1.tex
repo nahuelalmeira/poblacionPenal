@@ -22,6 +22,8 @@
 	linkcolor=blue,  %choose some color if you want links to stand out
 }
 
+\PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
+
 \begin{document}
 	
 \title{Población Penitenciaria en Argentina\\ 2002 a 2017 \\
@@ -50,7 +52,7 @@ En la figura \ref{fig:edad} mostramos la distribuci\'on de edades de los interno
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.28]{graficos/edad.png}
+	\includegraphics[scale=0.26]{graficos/edad.png}
 	\caption{Histograma de edades de los internos, junto con su la suma acumulada. \label{fig:edad}}
 \end{figure}
 
@@ -64,7 +66,7 @@ En la figura \ref{fig:duracion_condena} mostramos el histograma de duraci\'on de
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.28]{graficos/duracion_condena.png}
+	\includegraphics[scale=0.26]{graficos/duracion_condena.png}
 	\caption{Histograma de la duraci\'on de condenas y su suma cumulativa complementaria. \label{fig:duracion_condena}}
 \end{figure}
 
@@ -111,47 +113,58 @@ Las variables elegidas fueron la situación legal y la participación en program
 
 \subsection{Situación legal}
 
-Veamos cómo evoluciona la cantidad de internos condenados y procesados a lo largo de los años, y si nuestro análisis se condice con el de la nota de chequeado: \url{https://chequeado.com/ultimas-noticias/martin-casares-por-primera-vez-en-la-historia-en-2017-el-porcentaje-de-condenados-supero-al-de-procesados/}
+Como mencionamos anteriormente, un gran n\'umero de internos se encuentra detenido sin condena firme. Esta situaci\'on no es nueva, sino que existe desde hace por los menos 15 a\~nos (desde que se comenz\'o a realizar el censo). De hecho, de acuerdo con una nota de la plataforma Chequeado \cite{chequeadoCondenados}, esta situaci\'on era m\'as significativa en el pasado, y se ha ido revirtiendo con los a\~nos. Como podemos apreciar de la figura \ref{fig:situacion_legal}, nuestro an\'alisis coincide con el de la nota period\'istica.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.28]{graficos/situacion.png}
-	\caption{}
+	\includegraphics[scale=0.26]{graficos/situacion_legal.png}
+	\caption{Cantidad de internos en funci\'on del tiempo, discriminados por su situaci\'on legal. \label{fig:situacion_legal}}
 \end{figure}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.3]{graficos/variacion.png}
-	\caption{}
-\end{figure}
 
 \subsection{Participación en programas educativos}
 
-Queremos ver cómo varía la proporción de internos que participa en programas educativos a lo largo del tiempo.
+Queremos ver cómo varía la proporción de internos que participa en programas educativos a lo largo del tiempo. Los programas se clasifican de acuerdo a educaci\'on formal (primaria, secundaria, terciaria y universitaria) y no formal.
+
+En la figura \ref{fig:educativos} podemos ver la evoluci\'on temporal de la participaci\'on en cada uno de los programas. Mientras que los programas de educaci\'on no formal no presentan una variaci\'on significativa en el tiempo. los programas de educaci\'on formal presentan un incremento. Al desglosar los distintos tipos de educaci\'on formal, vemos que el incremento m\'as significativo se da en el nivel medio.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.28]{graficos/educacion.png}
-	\caption{}
+	\includegraphics[scale=0.26]{graficos/participacion_educativos.png}
+	\caption{Participaci\'on en diferentes programas educativos dentro de los establecimientos penitenciarios.\label{fig:educativos}}
 \end{figure}
 
 \section{Análisis de probabilidades condicionales}
+
 Tomar al menos dos pares de variables y realizar un análisis del tipo:
 
 \begin{itemize}
-	\item ¿Cuál es el porcentaje de internos argentinos y extranjeros? ¿Cómo varían esos números de acuerdo a si el establecimiento es federal o no federal?
 	\item ¿Cuál es la probabilidad de que el interno haya sido lesionado en el último año dado que está en una prisión en Buenos Aires? ¿Y en Córdoba?
 	\item ¿Cuál es la probabilidad de que se le otorguen salidas provisorias dado que esté casado/a? ¿Y siendo soltero?
 \end{itemize}
 
+El primer par de variables que elegimos es el par nacionalidad vs. tipo de establecimiento (federal o no federal). En concreto, queremos ver c\'omo cambia la poblaci\'on penal, en relaci\'on a la nacionalidad de los internos, seg\'un el tipo de establecimiento que se trate. 
+
+En el gr\'afico de barras de la figura \ref{fig:nacionalidad_todos}, mostramos los porcentajes de internos de acuerdo a su nacionalidad. Podemos ver que la gran mayor\'ia (m\'as del 94\%) son de nacionalidad Argentina. Del porcentaje restante, la mayor parte se distribuye entre paraguayos, peruanos y bolivianos.
+
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.6]{graficos/nacionalidad.png}
-	\includegraphics[scale=0.6]{graficos/nacionalidad_tipo_establecimiento.png}
-	\caption{}
+\includegraphics[scale=0.40]{graficos/nacionalidad_bar.png}
+	\caption{Porcentaje de internos de acuerdo a su nacionalidad, considerando todos los establecimientos penales.\label{fig:nacionalidad_todos}}
+\end{figure}
+
+En el a\~no 2014, el senador Miguel \'Angel Pichetto mencion\'o en una entrevista que el 20\% de la poblaci\'on penal eran inmigrantes. Basado en ese dato, sostuvo la necesidad de fortalecer el control fronterizo para disminuir el delito (particularmente, el narcotr\'afico) en Argentina. El dato mencionado es incorrecto, tal como se menciona en la nota de Chequeado \cite{chequeadoInmigrantes} Si bien los datos que ac\'a presentamos no corresponden al mismo per\'iodo, se puede hacer un an\'alisis similar al de la nota. B\'asicamente, el dato presentado por Pichetto en realidad corresponde a la poblaci\'on penal perteneciente a establecimientos federales, donde la proporci\'on de inmigrantes es mayor, tal como se puede ver en la figura \ref{nacionalidad_discriminado}. observamos 
+
+\begin{figure}[H]
+	\centering
+\includegraphics[scale=0.31]{graficos/nacionalidad_bar_federales.png}
+\includegraphics[scale=0.31]{graficos/nacionalidad_bar_no_federales.png}
+	\caption{Porcentaje de internos de acuerdo a su nacionalidad, discriminando establecimientos federales de no federales.\label{nacionalidad_discriminado}}
 \end{figure}
 
 
+\bibliography{referencias}
+\bibliographystyle{ieeetr}
 
 
 \end{document}
