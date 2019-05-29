@@ -15,14 +15,16 @@
 \usepackage{enumerate}
 
 \usepackage{color}   %May be necessary if you want to color links
-\usepackage{hyperref}
+\usepackage[hyphens]{url}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{breaklinks=true}
+\urlstyle{same}
+
 \hypersetup{
 	colorlinks=true, %set true if you want colored links
 	linktoc=all,     %set to all if you want both sections and subsections linked
 	linkcolor=blue,  %choose some color if you want links to stand out
 }
-
-\PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
 
 \begin{document}
 	
@@ -153,7 +155,7 @@ En el gr\'afico de barras de la figura \ref{fig:nacionalidad_todos}, mostramos l
 	\caption{Porcentaje de internos de acuerdo a su nacionalidad, considerando todos los establecimientos penales.\label{fig:nacionalidad_todos}}
 \end{figure}
 
-En el a\~no 2014, el senador Miguel \'Angel Pichetto mencion\'o en una entrevista que el 20\% de la poblaci\'on penal eran inmigrantes. Basado en ese dato, sostuvo la necesidad de fortalecer el control fronterizo para disminuir el delito (particularmente, el narcotr\'afico) en Argentina. El dato mencionado es incorrecto, tal como se menciona en la nota de Chequeado \cite{chequeadoInmigrantes} Si bien los datos que ac\'a presentamos no corresponden al mismo per\'iodo, se puede hacer un an\'alisis similar al de la nota. B\'asicamente, el dato presentado por Pichetto en realidad corresponde a la poblaci\'on penal perteneciente a establecimientos federales, donde la proporci\'on de inmigrantes es mayor, tal como se puede ver en la figura \ref{nacionalidad_discriminado}. observamos 
+En el a\~no 2014, el senador Miguel \'Angel Pichetto mencion\'o en una entrevista que el 20\% de la poblaci\'on penal eran inmigrantes. Basado en ese dato, sostuvo la necesidad de fortalecer el control fronterizo para disminuir el delito (particularmente, el narcotr\'afico) en Argentina. El dato mencionado es incorrecto, tal como se menciona en la nota de Chequeado \cite{chequeadoInmigrantes} Si bien los datos que ac\'a presentamos no corresponden al mismo per\'iodo, se puede hacer un an\'alisis similar al de la nota. B\'asicamente, el dato presentado por Pichetto en realidad corresponde a la poblaci\'on penal perteneciente a establecimientos federales, donde la proporci\'on de inmigrantes es mayor, tal como se puede ver en la figura \ref{nacionalidad_discriminado}. 
 
 \begin{figure}[H]
 	\centering
@@ -162,7 +164,16 @@ En el a\~no 2014, el senador Miguel \'Angel Pichetto mencion\'o en una entrevist
 	\caption{Porcentaje de internos de acuerdo a su nacionalidad, discriminando establecimientos federales de no federales.\label{nacionalidad_discriminado}}
 \end{figure}
 
+Continuando con el an\'alisis, analizamos si en verdad los inmigrantes cometen en mayor medida delitos asociados a la ley de estupefacientes $\mathrm{N}^{\circ}\; 23737$. En la figura \ref{estupefacientes_discriminado} podemos observar que la poblaci\'on carcelaria extranjera s\'i ha cometido, en mayor proporci\'on delitos asociados a esta ley. Sin embargo, la informaci\'on disponible no permite diferenciar los delitos de ``microtr\'afico'', o peque\~na venta de drogas, de lo que se conoce como ``narcotr\'afico'', dado que ambas categor\'ias caen dentro de la misma ley. 
 
+\begin{figure}[H]
+	\centering
+\includegraphics[scale=0.25]{graficos/estupefacientes_bar_argentinos.png}
+\includegraphics[scale=0.25]{graficos/estupefacientes_bar_extranjeros.png}
+	\caption{Porcentaje de internos detenidos o cendenado por delitos asociados a la ley de estupefacientes $\mathrm{N}^{\circ}\; 23737$, discriminado seg\'un nacionalidad.\label{estupefacientes_discriminado}}
+\end{figure}
+
+\Urlmuskip=0mu plus 1mu\relax
 \bibliography{referencias}
 \bibliographystyle{ieeetr}
 
