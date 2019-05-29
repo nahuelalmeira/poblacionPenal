@@ -46,7 +46,3 @@ Análisis probabilístico de distintas variable, por ejemplo:
 * Probabilidad de que un interno haya sido lesionado por otro interno dado que se encuentra en un establecimiento particular.
 
 **Método**: Presentación de un informe en formato pdf, html o md donde se detalle el estudio realizado sobre el dataset y se describan distintos aspectos de los datos. Uso de estadísticas descriptivas: Moda, media, mediana y desviación estándar. Análisis de outliers. Uso de librerías como Matplotlib y Seaborn para el graficado de datos.
-
-**Links de interés**:
-
-Datos disponibles en datos.gov.ar
