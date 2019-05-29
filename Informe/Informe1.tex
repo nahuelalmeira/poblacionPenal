@@ -15,14 +15,12 @@
 \usepackage{enumerate}
 
 \usepackage{color}   %May be necessary if you want to color links
-\usepackage{hyperref}
+\PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
 \hypersetup{
 	colorlinks=true, %set true if you want colored links
 	linktoc=all,     %set to all if you want both sections and subsections linked
 	linkcolor=blue,  %choose some color if you want links to stand out
 }
-
-\PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
 
 \begin{document}
 	
@@ -48,7 +46,7 @@ Las variables elegidas fueron: edad, duración de condena, diferencia entre fech
 
 \subsection{Edad}
 
-En la figura \ref{fig:edad} mostramos la distribuci\'on de edades de los internos, junto con su suma acumulada. Podemos ver que la mayor\'ia de los internos son personas j\'ovenes, y que el n\'umero de internos decae fuertemente con la edad. En el histograma se observa que hay registros de personas con edad cercana a 0 años. En realidad, se trata de 369 registros con edad igual a 0 años. Estos casos podr\'ian tratarse de un error de carga, o podr\'ian correspondan a ni\~nos nacidos dentro de los establecimientos. Observando en detalle esos registros, se puede ver que la segunda opci\'on es improbable, dado que esos registros tienen informaci\'on en otros campos que corresponden a internos que han cometido delitos.  Los dem\'as registros que podr\'ian ser considerados como outliers son los correspondientes a menores de edad. En este caso, existen 8 registros de personas de 16 a\~nos y 11 registros de personas de 17 a\~nos. Como esta cantidad es baja y no afecta la estad\'istica, decidimos incluirlos en el an\'alisis.
+En la figura \ref{fig:edad} mostramos la distribuci\'on de edades de los internos, junto con su suma acumulada. Podemos ver que la mayor\'ia de los internos son personas j\'ovenes, y que el n\'umero de internos decae fuertemente con la edad. En el histograma se observa que hay registros de personas con edad cercana a 0 años. En realidad, se trata de 369 registros con edad igual a 0 años. Estos casos podr\'ian tratarse de un error de carga, o podr\'ian corresponder a ni\~nos nacidos dentro de los establecimientos. Observando en detalle esos registros, se puede ver que la segunda opci\'on es improbable, dado que esos registros tienen informaci\'on en otros campos que corresponden a internos que han cometido delitos.  Los dem\'as registros que podr\'ian ser considerados como outliers son los correspondientes a menores de edad. En este caso, existen 8 registros de personas de 16 a\~nos y 11 registros de personas de 17 a\~nos. Como esta cantidad es baja y no afecta la estad\'istica, decidimos incluirlos en el an\'alisis.
 
 \begin{figure}[H]
 	\centering
@@ -62,7 +60,7 @@ Para estudiar la duraci\'on de las condenas, es necesario utilizar dos campos: `
 
 El preprocesamiento fue el siguiente: Filtramos los registros con valor nulo en duracion\textunderscore condena\textunderscore anios (1) y con valor nulo en duracion\textunderscore condena\textunderscore meses (32). Luego, filtramos los registros con valor igual a 0 en ambos campos (3649).
 
-En la figura \ref{fig:duracion_condena} mostramos el histograma de duraci\'on de condenas, junto con su suma cumulativa complemantaria. Podemos ver que la mayor\'ia de las condenas son cortas (las tres medidas de centralidad calculadas son menores o iguales a 8 a\~nos), y que presentan un decaimiento aproximadamente exponencial a medida que se incrementa la duraci\'on. 
+En la figura \ref{fig:duracion_condena} mostramos el histograma de duraci\'on de condenas, junto con su suma cumulativa complementaria. Podemos ver que la mayor\'ia de las condenas son cortas (las tres medidas de centralidad calculadas son menores o iguales a 8 a\~nos), y que presentan un decaimiento aproximadamente exponencial a medida que se incrementa la duraci\'on. 
 
 \begin{figure}[H]
 	\centering
@@ -126,7 +124,7 @@ Como mencionamos anteriormente, un gran n\'umero de internos se encuentra deteni
 
 Queremos ver cómo varía la proporción de internos que participa en programas educativos a lo largo del tiempo. Los programas se clasifican de acuerdo a educaci\'on formal (primaria, secundaria, terciaria y universitaria) y no formal.
 
-En la figura \ref{fig:educativos} podemos ver la evoluci\'on temporal de la participaci\'on en cada uno de los programas. Mientras que los programas de educaci\'on no formal no presentan una variaci\'on significativa en el tiempo. los programas de educaci\'on formal presentan un incremento. Al desglosar los distintos tipos de educaci\'on formal, vemos que el incremento m\'as significativo se da en el nivel medio.
+En la figura \ref{fig:educativos} podemos ver la evoluci\'on temporal de la participaci\'on en cada uno de los programas. Mientras que los programas de educaci\'on no formal no presentan una variaci\'on significativa en el tiempo. los programas de educaci\'on formal presentan un incremento. Al desglosar los distintos tipos de educaci\'on formal, vemos que el incremento m\'as significativo se da en el nivel medio. Por otro lado, también se observa que la proporción de internos involucrados en estudios primarios y secundarios es mucho mayor que la de terciarios y universitarios.
 
 \begin{figure}[H]
 	\centering
@@ -145,7 +143,7 @@ Tomar al menos dos pares de variables y realizar un análisis del tipo:
 
 El primer par de variables que elegimos es el par nacionalidad vs. tipo de establecimiento (federal o no federal). En concreto, queremos ver c\'omo cambia la poblaci\'on penal, en relaci\'on a la nacionalidad de los internos, seg\'un el tipo de establecimiento que se trate. 
 
-En el gr\'afico de barras de la figura \ref{fig:nacionalidad_todos}, mostramos los porcentajes de internos de acuerdo a su nacionalidad. Podemos ver que la gran mayor\'ia (m\'as del 94\%) son de nacionalidad Argentina. Del porcentaje restante, la mayor parte se distribuye entre paraguayos, peruanos y bolivianos.
+En el gr\'afico de barras de la figura \ref{fig:nacionalidad_todos}, mostramos los porcentajes de internos de acuerdo a su nacionalidad. Podemos ver que la gran mayor\'ia (m\'as del 94\%) son de nacionalidad argentina. Del porcentaje restante, la mayor parte se distribuye entre paraguayos, peruanos y bolivianos.
 
 \begin{figure}[H]
 	\centering
@@ -153,7 +151,7 @@ En el gr\'afico de barras de la figura \ref{fig:nacionalidad_todos}, mostramos l
 	\caption{Porcentaje de internos de acuerdo a su nacionalidad, considerando todos los establecimientos penales.\label{fig:nacionalidad_todos}}
 \end{figure}
 
-En el a\~no 2014, el senador Miguel \'Angel Pichetto mencion\'o en una entrevista que el 20\% de la poblaci\'on penal eran inmigrantes. Basado en ese dato, sostuvo la necesidad de fortalecer el control fronterizo para disminuir el delito (particularmente, el narcotr\'afico) en Argentina. El dato mencionado es incorrecto, tal como se menciona en la nota de Chequeado \cite{chequeadoInmigrantes} Si bien los datos que ac\'a presentamos no corresponden al mismo per\'iodo, se puede hacer un an\'alisis similar al de la nota. B\'asicamente, el dato presentado por Pichetto en realidad corresponde a la poblaci\'on penal perteneciente a establecimientos federales, donde la proporci\'on de inmigrantes es mayor, tal como se puede ver en la figura \ref{nacionalidad_discriminado}. observamos 
+En el a\~no 2014, el senador Miguel \'Angel Pichetto mencion\'o en una entrevista que el 20\% de la poblaci\'on penal eran inmigrantes. Basado en ese dato, sostuvo la necesidad de fortalecer el control fronterizo para disminuir el delito (particularmente, el narcotr\'afico) en Argentina. El dato mencionado es incorrecto, tal como se menciona en la nota de Chequeado \cite{chequeadoInmigrantes} Si bien los datos que ac\'a presentamos no corresponden al mismo per\'iodo, se puede hacer un an\'alisis similar al de la nota. B\'asicamente, el dato presentado por Pichetto en realidad corresponde a la poblaci\'on penal perteneciente a establecimientos federales, donde la proporci\'on de inmigrantes es mayor, tal como se puede ver en la figura \ref{nacionalidad_discriminado} observamos: 
 
 \begin{figure}[H]
 	\centering
@@ -162,9 +160,12 @@ En el a\~no 2014, el senador Miguel \'Angel Pichetto mencion\'o en una entrevist
 	\caption{Porcentaje de internos de acuerdo a su nacionalidad, discriminando establecimientos federales de no federales.\label{nacionalidad_discriminado}}
 \end{figure}
 
-
 \bibliography{referencias}
 \bibliographystyle{ieeetr}
 
+%\begin{thebibliography}{9}
+%	\bibitem{chequeadoCondenados} \url{https://chequeado.com/ultimas-noticias/martin-casares-por-primera-vez-en-la-historia-en-2017-el-porcentaje-de-condenados-supero-al-de-procesados/}
+%	\bibitem{chequeadoInmigrantes} \url{https://chequeado.com/ultimas-noticias/pichetto-el-20-de-los-presos-en-carceles-argentinas-son-extranjeros/}
+%\end{thebibliography}
 
 \end{document}
