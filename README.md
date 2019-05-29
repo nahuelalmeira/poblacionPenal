@@ -9,15 +9,18 @@ facilita: Franco Camporeale
 
 Para desarrollar políticas públicas el Estado necesita datos que provean la información necesaria para dimensionar y entender los problemas a tratar, así como las herramientas adecuadas para extraerla y presentarla de la forma más clara posible.
 
-En este trabajo, utilizaremos datos del Ministerio de Justicia y DDHH para analizar la emergencia penitenciaria declarada por el gobierno argentino en 2019, usando distintas herramientas estadísticas y algoritmos de aprendizaje automático para describir los aspectos más complejos y encontrar correlaciones, que puedan resultar de interés para el análisis de la situación del sistema carcelario nacional.
+En este trabajo, utilizaremos datos del Ministerio de Justicia y DDHH para analizar la [emergencia penitenciaria](http://aaip.gob.ar/normativa/nacional/resoluci%C3%B3n-184-2019-321392/texto) declarada por el gobierno argentino en 2019, usando distintas herramientas estadísticas y algoritmos de aprendizaje automático para describir los aspectos más complejos y encontrar correlaciones, que puedan resultar de interés para el análisis de la situación del sistema carcelario nacional.
 
 ### Descripción del dataset
 
-El Ministerio de Justicia y DDHH publica desde 2002 los datos estadísticos de la población en las cárceles del país. El dataset con el que trabajaremos está extraído del Sistema Nacional de Estadísticas sobre la Ejecución de Penas (SNEEP), y cuenta con las siguientes características:
+El Ministerio de Justicia y DDHH publica desde 2002 los datos estadísticos de la población en las cárceles del país. El dataset con el que trabajaremos está extraído del [Sistema Nacional de Estadísticas sobre la Ejecución de Penas](https://datos.gob.ar/dataset/justicia-sistema-nacional-estadisticas-sobre-ejecucion-pena---sneep) (SNEEP), y cuenta con las siguientes características:
 
-* Estadísticas por cada año desde 2002 a 2017 inclusive. El dataset unificado tiene 939728 registros. El último año censado lista un total de 85283 personas. 
+* Estadísticas por cada año desde 2002 a 2017 inclusive. 
+* El dataset unificado tiene 939728 registros. 
+* El último año censado lista un total de 85283 personas. 
+* Datos anónimos individuales de todos los internos de las cárceles del país. 
 
-* Datos anónimos individuales de todos los internos de las cárceles del país. Por cada interno se detalla: 
+Por cada interno se detalla: 
 
 * Datos de la institución: nombre, provincia, tipo de servicio
 * Datos socioeconómicos: género, edad, nacionalidad, nivel de instrucción, situación laboral al ingresar, etc.
