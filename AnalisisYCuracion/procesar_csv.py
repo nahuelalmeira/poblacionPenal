@@ -10,6 +10,8 @@ def preprocesar_csv(input_file, output_file, year=None):
             line = in_f.readline()
             if year == 2017:
                 line = line.replace('tiene_medidas_seguridad,', '')
+                line = line.replace('recibio_atencion_medica_ult_anio,', 
+                                    'recibio_atencion_medica_ult_anio_id,') #col _id mal nombrada  
             while line:
                 out_line = line.replace(',TRENEL', ', TRENEL')
                 out_line = out_line.replace(', ', '[COMA] ')
@@ -97,6 +99,14 @@ def procesar_edades(df):
     df['edad'].fillna(df['edad'].mean(skipna=True))
     return df
 
+def eliminar_id(df):
+    """
+    Elimina las columnas _id, nos quedamos solo con las descripciones
+    """
+    df = df.drop([x for x in df if x.endswith('_id')], 1)
+    df.columns = [col.replace('_descripcion', '') for col in df.columns]
+    return df
+
 #input_file = '../datasets/sneep-2017.csv'
 #output_file = '../datasets/py_sneep-2017.csv'
 input_file = sys.argv[1]
@@ -121,5 +131,9 @@ print('Calculando numero de delitos')
 df = calcular_numero_delitos(df)
 print('Procesando edades')
 df = procesar_edades(df)
-
+print('Eliminando columnas con pocos datos')
 df = filtrar_nulos(df, f=0.7)
+print('Eliminando las columnas _id' )
+df = eliminar_id(df)
+
+df.to_csv(path_or_buf=output_file, sep=';')
