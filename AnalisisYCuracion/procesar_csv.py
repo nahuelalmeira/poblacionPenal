@@ -2,16 +2,21 @@ import os
 import sys
 import pandas as pd
 import numpy as np
+from datetime import datetime
 
 def preprocesar_csv(input_file, output_file, year=None):
+    """
+    Cambia separación por coma a separación por punto y coma y elimina comillas dobles. 
+    También corrige algunos errores en ciertas columnas.
+    """
     number_of_fields = []
     with open(input_file, 'r') as in_f:
         with open(output_file, 'w') as out_f:
             line = in_f.readline()
+            line = line.replace('recibio_atencion_medica_ult_anio,', 
+                                    'recibio_atencion_medica_ult_anio_id,') #col _id mal nombrada 
             if year == 2017:
-                line = line.replace('tiene_medidas_seguridad,', '')
-                line = line.replace('recibio_atencion_medica_ult_anio,', 
-                                    'recibio_atencion_medica_ult_anio_id,') #col _id mal nombrada  
+                line = line.replace('tiene_medidas_seguridad,', '') #col sin datos 
             while line:
                 out_line = line.replace(',TRENEL', ', TRENEL')
                 out_line = out_line.replace(', ', '[COMA] ')
@@ -28,7 +33,7 @@ def preprocesar_csv(input_file, output_file, year=None):
 
 def filtrar_nulos(df, f=0.8):
     """
-    Descarto registros que tengan al menos
+    Descarta registros que tengan al menos
     una fraccion f de campos nulos.
     """
     
@@ -41,7 +46,7 @@ def filtrar_nulos(df, f=0.8):
 
 def procesar_fechas(df, current_year):
     """
-    Descarto fechas que sean posteriores al 31 de Diciembre
+    Descarta fechas que sean posteriores al 31 de Diciembre
     del año en que se realizo el censo.
     """
     
@@ -69,9 +74,20 @@ def procesar_fechas(df, current_year):
     df['fecha_condenado'] = pd.to_datetime(df['fecha_condenado'])
     return df
 
+def tipo_fechas(df):
+    """
+    Cambia el tipo de las fechas de string a datetime
+    """
+    
+    cols = ['fecha_detencion', 'fecha_condenado']
+        
+    for col in cols:
+        df[col] =  pd.to_datetime(df[col], format='%m/%d/%y')
+    return df
+
 def calcular_tiempo_resolucion(df):
     """
-    Creo un nuevo campo con el tiempo de resolucion de condena.
+    Crea un nuevo campo con el tiempo de resolucion de condena.
     """
     
     condenados = df['situacion_legal_descripcion'] == 'Condenado'
@@ -80,7 +96,7 @@ def calcular_tiempo_resolucion(df):
 
 def calcular_numero_delitos(df):
     """
-    Creo un nuevo campo con la cantidad de delitos cometidos.
+    Crea un nuevo campo con la cantidad de delitos cometidos.
     """
     
     delito_cols = ['delito{}_descripcion'.format(i) for i in range(1, 6)]
@@ -89,7 +105,7 @@ def calcular_numero_delitos(df):
 
 def procesar_edades(df):
     """
-    Reemplazo los NaN y valores iguales a 0 por la media de las edades.
+    Reemplaza los NaN y valores iguales a 0 por la media de las edades.
     """
     #mask = (df['edad'] == 0) & ((df['delitos_cantidad'] > 0) | \
     #                              (df['situacion_legal_descripcion'] == 'Condenado') | \
@@ -107,8 +123,6 @@ def eliminar_id(df):
     df.columns = [col.replace('_descripcion', '') for col in df.columns]
     return df
 
-#input_file = '../datasets/sneep-2017.csv'
-#output_file = '../datasets/py_sneep-2017.csv'
 input_file = sys.argv[1]
 output_file = sys.argv[2]
 
@@ -121,17 +135,17 @@ print('Preprocesando csv')
 preprocesar_csv(input_file, output_file, year=year)
 
 df = pd.read_csv(output_file, sep=';')
-df = filtrar_nulos(df, f=0.7)
 
 print('Procesando fechas')
-df = procesar_fechas(df, current_year=2017)
+df = procesar_fechas(df, current_year=year)
+df = tipo_fechas(df)
 print('Calculando tiempo resolucion')
 df = calcular_tiempo_resolucion(df)
 print('Calculando numero de delitos')
 df = calcular_numero_delitos(df)
 print('Procesando edades')
 df = procesar_edades(df)
-print('Eliminando columnas con pocos datos')
+print('Eliminando filas con pocos datos')
 df = filtrar_nulos(df, f=0.7)
 print('Eliminando las columnas _id' )
 df = eliminar_id(df)
