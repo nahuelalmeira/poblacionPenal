@@ -7,6 +7,12 @@ datasets/*
 # Ignoro la carpeta graficos
 Informe/graficos/*
 
+# Ignoro archivos generados por una notebook
+IntroML/arbol1
+IntroML/arbol1.pdf
+IntroML/arbol2
+IntroML/arbol2.pdf
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
