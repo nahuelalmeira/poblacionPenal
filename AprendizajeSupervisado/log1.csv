@@ -1,0 +1,8 @@
+,id_ejecución,tipo_modelo,descripcion,accuracy,precision,recall
+0,ejec0,LogisticRegression,"default parameters (penalty=l2, C=1.0, random_state=0)",0.3877254217568354,0.29446025170469936,0.3877254217568354
+1,ejec1,LogisticRegression,"penalty=l1, C=0.01, random_state=0",0.38641652123327513,0.29234367996034283,0.38641652123327513
+2,ejec2,DecisionTreeClassifier,"default parameters (criterion=gini, max_depth=None, max_features=None, random_state=0)",0.5238510762070971,0.5226123119319215,0.5238510762070971
+3,ejec3,DecisionTreeClassifier,"criterion=entropy, max_depth=None, max_features=None, random_state=0",0.5359220477021525,0.5342594268742159,0.5359220477021525
+4,ejec4,RandomForestClassifier,"default parameters (n_estimators=10, criterion=gini, max_depth=None, max_features=auto, random_state=0)",0.5465386852821408,0.5430162358962715,0.5465386852821408
+5,ejec5,RandomForestClassifier,"n_estimators=450, criterion=entropy, max_depth=20, max_features=auto, random_state=0",0.5706806282722513,0.5695046405478492,0.5706806282722513
+6,ejec6,XGBClassifier,"default parameters (max_depth=3, learning_rate=0.1, n_estimators=100, random_state=0)",0.42437463641652123,0.34521736728703967,0.42437463641652123
