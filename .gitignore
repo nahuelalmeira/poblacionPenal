@@ -1,6 +1,9 @@
 # Ignoro datasets
 datasets/*
 
+# Ignoro más imagenes
+VisualizacionYAnalisis/imagenes
+
 # Ignoro las imagenes png 
 *.png
 
