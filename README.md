@@ -1,4 +1,4 @@
-### Diplomatura AACSyA 2019 - FaMAF - UNC
+### Diplomatura CDyAA 2019 - FaMAF - UNC
 
 ## Trabajo de mentoría anual:
 # Población Penitenciaria en Argentina 2002 a 2017
